@@ -42,3 +42,7 @@ Route::get('/add_article', function () {
 Route::get('/update_article', function () {
     return view('update_article');
 });
+
+Route::resource('articles', 'ArticlesController', [
+    'except' => 'show',
+]);
