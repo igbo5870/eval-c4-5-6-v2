@@ -1,3 +1,2 @@
-<html>
-    <h1>Statistique</h1>
-</html>
+@include('header')
+@include('footer')

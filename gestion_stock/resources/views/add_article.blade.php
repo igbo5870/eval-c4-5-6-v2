@@ -1,1 +1,2 @@
-<h1>Ajouter un article</h1>
+@include('header')
+@include('footer')

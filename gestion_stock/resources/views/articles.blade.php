@@ -1,1 +1,2 @@
-<h1>Liste des articles en stock</h1>
+@include('header')
+@include('footer')

@@ -1,1 +1,2 @@
-<h1>Historique du stock</h1>
+@include('header')
+@include('footer')
