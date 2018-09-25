@@ -1,0 +1,1 @@
+<h1>Historique du stock</h1>
