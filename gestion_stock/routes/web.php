@@ -43,6 +43,4 @@ Route::get('/update_article', function () {
     return view('update_article');
 });
 
-Route::resource('articles', 'ArticlesController', [
-    'except' => 'show',
-]);
+Route::get('/articles', 'ArticlesController@index')->name('articles');
