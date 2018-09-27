@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -19,57 +20,47 @@ class ArticlesController extends Controller
         return view('articles', ['articles' => $articles]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function add()
     {
+        $article = Article::create([
+            'name' => request('name'),
+            'category_id' => (int) request('category'),
+            'unit_id' => (int) request('units'),
+            'sales_price' => (float) request('price'),
+        ]);
+        session()->flash('message', 'Article ajouter avec succée');
+
+        return redirect()->back()->with('message', 'Article ajouter avec succès');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function updateShow($id)
     {
+        $article = Article::find($id);
+        $category = DB::table('categories')->get();
+        $units = DB::table('units')->get();
+
+        return view('update_article', ['article' => $article, 'category' => $category, 'units' => $units]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function modify(Request $request, $id)
     {
+        $article = Article::find($id);
+        $name = $article->name;
+        $article->name = request('name');
+        $article->category_id = request('category');
+        $article->unit_id = request('units');
+        $article->sales_price = request('price');
+        $article->save();
+
+        return redirect('articles')->with('message', 'Article '.$name.' modifier avec succées');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int                      $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function delete(Request $request, $id)
     {
-    }
+        $article = Article::find($id);
+        $name = $article->name;
+        $article->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
+        return redirect('articles')->with('message', 'Article '.$name.' supprimer avec succées ');
     }
 }

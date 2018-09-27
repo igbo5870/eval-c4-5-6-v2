@@ -41,6 +41,6 @@ class AddMovementController extends Controller
             'sale_id' => request('sales'),
         ]);
 
-        return 'Formulaire reçus';
+        return redirect()->back()->with('message', 'Mouvement ajouter avec succès');
     }
 }

@@ -14,16 +14,14 @@ class HistoricalController extends Controller
      */
     public function index()
     {
-        $historical = DB::table('movements')->get();
-        $article = DB::table('articles')->join('movements', 'articles.id', '=', 'movements.article_id')->get();
-        $type_movement = DB::table('movement_types')->join('movements', 'movement_types.id', '=', 'movements.movement_type_id')->get();
-        $unit = DB::table('units')->join('articles', 'units.id', '=', 'articles.unit_id')->get();
+        $article = DB::table('movements')
+                    ->join('articles', 'movements.article_id', '=', 'articles.id')
+                    ->get();
 
         return view('historical',
-            ['historical' => $historical,
+            [
             'article' => $article,
-            'type_movement' => $type_movement,
-            'unity' => $unit, ]
+            ]
         );
     }
 

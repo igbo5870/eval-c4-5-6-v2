@@ -9,13 +9,23 @@
 @import '~bootstrap/scss/bootstrap';
 
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+}
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
 .navbar-title{
-  font-size: 2rem;
-  margin-right: 50px;
+  font-size: 1.4em;
 }
 

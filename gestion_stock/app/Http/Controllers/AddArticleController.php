@@ -31,6 +31,6 @@ class AddArticleController extends Controller
         ]);
         session()->flash('message', 'Article ajouter avec succée');
 
-        return redirect()->back()->with('message', 'Articlle ajouter avec succées');
+        return redirect()->back()->with('message', 'Article ajouter avec succès');
     }
 }

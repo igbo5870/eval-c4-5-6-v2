@@ -41,7 +41,7 @@ Route::get('/add_article', function () {
     return view('add_article');
 });
 
-Route::get('/update_article', function () {
+Route::get('/update_article/{id}', function () {
     return view('update_article');
 });
 
@@ -51,7 +51,11 @@ Route::get('/articles', 'ArticlesController@index')->name('articles');
 Route::get('/historical', 'HistoricalController@index')->name('movements');
 Route::get('/add_article', 'AddArticleController@index')->name('categories');
 Route::get('/movement', 'AddMovementController@index')->name('movements');
+Route::get('/update_article/{id}', 'ArticlesController@updateShow');
 
-// Route Formulaireontrolle
+// Route Formulaire
 Route::post('/movement', 'AddMovementController@store');
-Route::post('/add_article', 'AddArticleController@store');
+Route::post('/add_article', 'ArticlesController@add');
+Route::post('/update_article/{id}', 'ArticlesController@modify');
+Route::post('/articles/{id}', 'ArticlesController@delete');
+Route::delete('/articles/delete/{id}', 'ArticlesController@destroy');

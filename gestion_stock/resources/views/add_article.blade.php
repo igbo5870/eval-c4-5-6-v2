@@ -1,4 +1,10 @@
 @include('header')
+<h2>Ajouter un article au stock</h2>
+@if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+@endif
 <form method="post">
     {{ csrf_field() }}
     <input type="text" name="name" placeholder="nom">
@@ -15,7 +21,6 @@
         @endforeach
     </select>
     <input type="text" name="price" placeholder="prix">
-    <input type="submit" value="Ajouter">
+    <input type="submit" value="Ajouter" class="btn btn-primary">
 </form>
-
 @include('footer')
