@@ -1,5 +1,5 @@
 @include('header')
-<button type="button" class="btn btn-primary">Ajouter</button>
+<a href="/add_article" class="btn btn-primary">Ajouter</a>
 <ul>
     @foreach ($articles as $article)
         <li>
